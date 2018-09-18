@@ -1,24 +1,14 @@
-# README
+# Invoicer - CRUD Application for creating invoices
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Features:
+* User can register and log in
+* User can create, edit, view and delete invoices
+* User can export list of all invoices to CSV/PDF
+* User can print invoice
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Technologies:
+* Ruby on Rails
+* Gems: Devise, CSV Importer, Wicked PDF Gem
+* Javascript
+* HTML, CSS, SASS
+* Bootstrap, Bulma
