@@ -1,4 +1,12 @@
 @import "bulma";
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 50px;
+}
 .containerTable {
   display: flex;
   justify-content: center;
@@ -13,6 +21,9 @@
   height: 50px;
   width: 100%;
   overflow: hidden;
+  left: 0;
+  right: 0;
+  bottom: 0;
   p {
     margin-top: 1%;
   }

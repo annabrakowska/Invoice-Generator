@@ -5,7 +5,14 @@ class InvoicesController < ApplicationController
   # GET /invoices.json
   def index
     @invoices = Invoice.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @invoices.to_csv, filename: "invoices-#{Date.today}.csv" }
+    end
+
   end
+
 
   # GET /invoices/1
   # GET /invoices/1.json

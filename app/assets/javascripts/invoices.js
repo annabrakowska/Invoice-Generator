@@ -17,14 +17,6 @@ function deleteRows() {
   }
 }
 let tot = 0;
-// function sum() {
-//   let prices = document.querySelectorAll("price");
-//   prices.forEach(function(el) {
-//     total += el.value;
-//   });
-//   console.log("this is total: " + tot);
-//   return tot;
-// }
 
 function calcPrice() {
   let parent = document.getElementsByClassName("item-row");
@@ -42,3 +34,46 @@ function calcPrice() {
   document.getElementsByClassName("due")[0].innerText = (tot + tax).toFixed(2);
   document.getElementById("invoice_total1").value = (tot + tax).toFixed(2);
 }
+
+function invoiceReader(main, modal) {
+  let info = main.value;
+  modal.empty();
+  modal.append(info);
+}
+
+function inviceReader2(main, modal) {
+  let info2 = main.innerText;
+  modal.empty();
+  modal.append(" " + info);
+}
+
+// document.getElementById("invoice_button").addEventListener("click", function() {
+//   for (let i = 1; i < 11; i++) {
+//     let str = i.toString();
+//     let field = document.getElementById("#" + str);
+//     let fieldModal = document.getElementById("#modal_" + id);
+//     invoiceReader(field, fieldModal);
+//   }
+//   let subtotal = document.getElementById("subtotal");
+//   let modalSubtotal = document.getElementById("modal_subtotal");
+//   inviceReader2(subtotal, modalSubtotal);
+
+//   let invoiceNum = document.getElementById("invoice_number");
+//   let modalInvNum = document.getElementById("modal_invoice_number");
+//   inviceReader2(invoiceNum, modalInvNum);
+
+//   let rows = document.getElementsByClassName("item-row");
+//   document.getElementById("modal_tbody").empty();
+
+//   for (i = 0; i < rows.length; i++) {
+//     let row = rows[i];
+//     let items = document.getElementsByClassName("item_name");
+//     let name = items[i].value;
+//     document
+//       .getElementById("modal_tbody")
+//       .append('<tr class="modal-item-row"></tr');
+//     document
+//       .getElementsByClassName("modal-item-row:last")
+//       .append("<td>" + name + "</td>");
+//   }
+// });
