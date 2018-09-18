@@ -1,4 +1,5 @@
-<br/><br/><br/><br/>
+<br/>
+</br>
 <div class="columns">
 <%= simple_form_for(@invoice) do |f| %>
   <div id="wrap">
@@ -7,10 +8,12 @@
       <div class="columns" style="width:100%">
         <div class="column is-four-fifths is-size-2"> INVOICE</div>
         <div id="date" class="column is-size-5 has-text-right" style="margin-top:2%;"></div>
+        <hr/>
        </div> 
+       <br/>
+
     </div>
-    <hr>
-    <br/>
+
     <div class="row">
       <div class="column is-one-third">
         <strong>From</strong>
@@ -36,12 +39,12 @@
             <div><label><strong>Invoice no.</strong> <%= (Invoice.last.present? ? (Invoice.last.id + 1) : 1) %></label></div>
           </div>
           <div class="form-group">
-          <%= f.label :due_date, required: false %>
+          <%= f.label :date, required: false %>
             <div><%= f.date_field :date, class: "form-control datepicker", as: :string, id: "invoice_date" %></div>
           </div>
 
           <div class="form-group">
-            <div><%= f.label :currency, id:"currency", required: false %>   <%= f.select :currency, ['USD', 'PLN', 'EUR', 'AUD']%></div>
+            <div><%= f.label :currency, required: false %>   <%= f.select :currency, ['USD', 'PLN', 'EUR', 'AUD']%></div>
           </div>
 
 
@@ -49,11 +52,11 @@
           <div class="form-group">
             <div class="col-xs-5 invoice_space"><label>Amount due:</label></div>
             <hr/>
-            <div class="col-xs-7 invoice_space bold" style="text-align:right; padding-top:7px"><span class="due">0.00</span><span class="subtotal_currency"></span></div>
+            <div class="col-xs-7 invoice_space bold" style="text-align:right; padding-top:7px"><span class="due">875.00</span><span class="subtotal_currency"></span></div>
           </div>
         </form>
-      </div>
-    </div>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
 
     <div class="row">
       <div class="col-xs-12 table-responsive">
@@ -71,17 +74,28 @@
       
           <tbody id="tbody">
             <tr class="item-row">
-              <td><input class="form-control item_name" placeholder="Item name" /></td>
-              <td><input class="form-control item_desc" placeholder="Item escription" /></td>
-              <td><input class="form-control cost" value="0.00" /></td>
-              <td><input id="qty" class="form-control qty" value="0" /></td>
-              <td class="price_td"><span id="price" class="price">0.00</span><span class="subtotal_currency"></span></td>
-              <td class="delete_td"><a onclick="deleteRows()" class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td>
+              <td><input class="form-control item_name" value="Item #1" /></td>
+              <td><input class="form-control item_desc" value="Description" /></td>
+              <td><input class="form-control cost" value="650.00" /></td>
+              <td><input class="form-control qty" value="1" /></td>
+              <td class="price_td"><span class="price">650.00</span><span class="subtotal_currency"></span></td>
+              <td class="delete_td"><a class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td>
+            </tr>
+          
+            <tr class="item-row">
+              <td><input class="form-control item_name" value="Item #2" /></td>
+
+              <td><input class="form-control item_desc" value="Description #2" /></td>
+              <td><input class="form-control cost" value="75.00" /></td>
+              <td><input class="form-control qty" value="3" /></td>
+              <td class="price_td"><span class="price">225.00</span><span class="subtotal_currency"></span></td>
+              <td class="delete_td"><a class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td>
+            </tr>
+          
+            <tr id="hiderow">
+              <td colspan="6"><a id="addrow" class="button" href="javascript:;" title="Add a row"><span class="ti-plus"></span>  Add a row</a></td>
             </tr>
           </tbody>
-          <div id="hiderow">
-          <td><a id="additem" class="button is-outlined is-primary" onClick="addRow()" title="Add a row">Add</a></td>
-        </div>
         </table>
       </div>
     </div>
@@ -92,7 +106,7 @@
           <table class="table table-hover" id="totals">
             <tr>
               <th style="width:50%">Subtotal:</th>
-              <td><span id="subtotal">0.00</span><span class="subtotal_currency"></span></td>
+              <td><span id="subtotal">875.00</span><span class="subtotal_currency"></span></td>
             </tr>
             <tr>
               <th>Tax:</th>
@@ -100,7 +114,7 @@
             </tr>
             <tr>
               <th>Total:</th>
-              <td class="balance"><span class="due" id="invoice_total">0.00</span><span class="subtotal_currency"></span></td>
+              <td class="balance"><span class="due" id="invoice_total">875.00</span><span class="subtotal_currency"></span></td>
               <%=f.hidden_field :amount, id: "invoice_total1" %>
             </tr>
           </table>
@@ -109,58 +123,15 @@
     </div>
 
     <div class="containerTable">
-        <a class="button is-outlined is-info" id="invoice_button" data-toggle="modal" data-target="#invoice_modal">Show Invoice</a>
-        <%= f.button :submit, 'Print', class: 'button is-inverted', id: "print" %> 
-        <%= f.button :submit, 'Save Invoice', class: 'button is-outlined is-primary', id: "submit_invoice" %>       
+        <a class="button" id="invoice_button" data-toggle="modal" data-target="#invoice_modal">Show Invoice</a>
+        <%= f.button :submit, 'Submit Payment', class: 'button', id: "submit_invoice" %>    
     </div>
-    <br/>
-    <br/>
-    <div style="text-align:center">Terms</div>
-    <hr>
     <div class="containerTable">
-    <br/>
-    <div style="width:100%"><textarea style="width:100%; font-size:10px;" id="terms", value=""></textarea></div>
+      <label class="checkbox">
+        <input type="checkbox">
+          I agree to the <a href="#">terms and conditions</a>
+      </label>
     </div>  
   </div>
   <% end %>
 </div>
-
-
-
-<div class="modal fade" id="invoice_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content" style="width:920px">
-      <div class="container-fluid invoice_wrapper" style="margin:10px" id="print-me">
-        <%= render 'invoice' %>
-      </div>
-      <div class="modal-footer">
-        <button class="button" onclick="printDiv('print-me')">Print</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<script>
-function dater() {
-  let dateObj = new Date();
-  let date =
-    dateObj.getUTCMonth() +
-    1 +
-    "-" +
-    dateObj.getUTCDate() +
-    "-" +
-    dateObj.getUTCFullYear();
-
-  document.getElementById("date").innerText = "Date: " + date;
-}
-dater();
-
-document.getElementById("qty").addEventListener("keyup", function() {
-  calcPrice();
-});
-
-
-document.getElementById("terms").value = 'The fee is a fixed fee of 2% plus VAT and covers all work et out in the attached specification including any ancillary work or minor changes requested by us for the installation of a fully tested and functioning system that meets our reasonable requirements.';
-
-</script>

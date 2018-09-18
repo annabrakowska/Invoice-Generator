@@ -5,6 +5,7 @@ class CreateInvoices < ActiveRecord::Migration[5.2]
       t.string :company
       t.string :client
       t.string :currency
+      t.string :status
       t.date :date
 
       t.timestamps

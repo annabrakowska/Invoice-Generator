@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_09_17_142504) do
     t.string "company"
     t.string "client"
     t.string "currency"
+    t.string "status"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

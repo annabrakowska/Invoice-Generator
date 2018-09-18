@@ -1,0 +1,31 @@
+@import "bulma";
+.containerTable {
+  display: flex;
+  justify-content: center;
+  display: flex;
+  justify-content: space-between;
+}
+.footeR {
+  background-color: #f8f9fa;
+  position: absolute;
+  left: 0;
+  margin-bottom: 0x;
+  height: 50px;
+  width: 100%;
+  overflow: hidden;
+  p {
+    margin-top: 1%;
+  }
+}
+
+tbody :hover {
+  background: #f8f9fa;
+}
+a:link {
+  text-decoration: none;
+}
+
+a:link:hover {
+  text-decoration: none;
+  background: transparent;
+}
