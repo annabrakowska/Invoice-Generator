@@ -6,11 +6,12 @@
     <div class="row">
       <div class="columns" style="width:100%">
         <div class="column is-four-fifths is-size-2"> INVOICE</div>
-        <div id="date" class="column is-size-5 has-text-right" style="margin-top:2%;"></div>
+        <div class="date" class="column is-size-5 has-text-right" style="margin-top:2%;"></div>
        </div> 
     </div>
     <hr>
     <br/>
+
     <div class="row">
       <div class="column is-one-third">
         <strong>From</strong>
@@ -21,6 +22,9 @@
           <input class="form-control" id= "4"  placeholder="phone number" />
         </address>
       </div>
+
+
+
       <div class="column is-one-third">
         <strong>To</strong>
         <address>
@@ -30,6 +34,7 @@
           <input class="form-control" id= "8"  placeholder="phone number" />
         </address>
       </div>
+
       <div class="column is-one-third">
         <form class="form-horizontal">
           <div class="form-group">
@@ -37,19 +42,18 @@
           </div>
           <div class="form-group">
           <%= f.label :due_date, required: false %>
-            <div><%= f.date_field :date, class: "form-control datepicker", as: :string, id: "invoice_date" %></div>
+            <div><%= f.date_field :date, class: "datepicker form-control", as: :string, id: "invoice_date" %></div>
           </div>
 
           <div class="form-group">
             <div><%= f.label :currency, id:"currency", required: false %>   <%= f.select :currency, ['USD', 'PLN', 'EUR', 'AUD']%></div>
           </div>
 
-
-          <div class="col-xs-12"></div>
+         
           <div class="form-group">
-            <div class="col-xs-5 invoice_space"><label>Amount due:</label></div>
+            <label>Amount due:</label>
             <hr/>
-            <div class="col-xs-7 invoice_space bold" style="text-align:right; padding-top:7px"><span class="due">0.00</span><span class="subtotal_currency"></span></div>
+            <div style="text-align:right; padding-top:7px" class="totals" id="due">0.00</div>
           </div>
         </form>
       </div>
@@ -71,10 +75,10 @@
       
           <tbody id="tbody">
             <tr class="item-row">
-              <td><input class="form-control item_name" placeholder="Item name" /></td>
-              <td><input class="form-control item_desc" placeholder="Item escription" /></td>
-              <td><input class="form-control cost" value="0.00" /></td>
-              <td><input id="qty" class="form-control qty" value="0" /></td>
+              <td><input class="item_name" placeholder="Item name" /></td>
+              <td><input class="item_desc" placeholder="Item escription" /></td>
+              <td><input class="cost" value="0.00" /></td>
+              <td><input id="qty" class="qty" value="0" /></td>
               <td class="price_td"><span id="price" class="price">0.00</span><span class="subtotal_currency"></span></td>
               <td class="delete_td"><a onclick="deleteRows()" class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td>
             </tr>
@@ -92,15 +96,15 @@
           <table class="table table-hover" id="totals">
             <tr>
               <th style="width:50%">Subtotal:</th>
-              <td><span id="subtotal">0.00</span><span class="subtotal_currency"></span></td>
+              <td><span id="subtotal" class="totals">0.00</span><span class="subtotal_currency"></span></td>
             </tr>
             <tr>
-              <th>Tax:</th>
-              <td><input id="9" class="form-control" value="0.00" /></td>
+              <th>Tax 13% </th>
+              <td><span id="tax" class="totals">0.00</span></td>
             </tr>
             <tr>
               <th>Total:</th>
-              <td class="balance"><span class="due" id="invoice_total">0.00</span><span class="subtotal_currency"></span></td>
+              <td class="totals"><span class="due" id="invoice_total">0.00</span><span class="subtotal_currency"></span></td>
               <%=f.hidden_field :amount, id: "invoice_total1" %>
             </tr>
           </table>
@@ -151,7 +155,13 @@ function dater() {
     "-" +
     dateObj.getUTCFullYear();
 
-  document.getElementById("date").innerText = "Date: " + date;
+    let dateFields =  document.querySelectorAll(".date");
+
+    dateFields.forEach(function(el) {
+      el.innerText = "Date: " + date;
+    })
+ 
+
 }
 dater();
 
@@ -161,5 +171,32 @@ document.getElementById("qty").addEventListener("keyup", function() {
 
 
 document.getElementById("terms").value = 'The fee is a fixed fee of 2% plus VAT and covers all work et out in the attached specification including any ancillary work or minor changes requested by us for the installation of a fully tested and functioning system that meets our reasonable requirements.';
+
+
+document.getElementById("invoice_button").addEventListener("click", function() {
+  let modalField = Array.from(document.querySelectorAll(".modalField"));
+  let formField = Array.from(document.querySelectorAll(".form-control"));
+  let totals = Array.from(document.querySelectorAll(".totals"));
+  let totalsModal = Array.from(document.querySelectorAll(".totalsModal"));
+  document.getElementById("termsModal").innerText = document.getElementById("terms").value;
+
+
+
+  totals.forEach(function(el, index) {
+    totalsModal[index].innerText = el.innerText;
+  });
+
+
+  document.querySelectorAll(".form-control").forEach(function(el, index) {
+    modalField[index].innerText = formField[index].value;
+    
+  });
+});
+
+
+
+
+
+
 
 </script>

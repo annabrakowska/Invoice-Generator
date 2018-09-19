@@ -1,62 +1,59 @@
 <div class="row">
-  <div class="col-xs-12">
-    <h3 class="page-header">
-      INVOICE
-      <small class="pull-right">Date: <span class="invoice_header_date"></span></small>
-    </h3>
-  </div><!-- /.col -->
+<div class="columns" style="width:100%">
+  <div class="column is-four-fifths is-size-2"> INVOICE</div>
+  <div class="date" class="column is-size-5 has-text-right" style="margin-top:2%;"></div>
+ </div> 
 </div>
-                <!-- info row -->
-<div class="row invoice-info">
-  <div class="col-xs-4 invoice-col">
-    From
+<hr>
+<br/>
+              
+<div class="row">
+  <div class="column is-one-third">
+    <strong>From</strong>
     <address>
-      <div id= "modal_1" class="bold"></div>
-      <div id= "modal_2"></div>
-      <div id= "modal_3"></div>
-      <div id= "modal_4"></div>
-
+      <div class= "modalField" class="bold"></div>
+      <div class= "modalField"></div>
+      <div class= "modalField"></div>
+      <div class= "modalField"></div>
     </address>
-  </div><!-- /.col -->
+  </div>
 
-  <div class="col-xs-4 invoice-col">
-    To
-    <address>
-      <div id= "modal_5"></div>
-      <div id= "modal_6"></div>
-      <div id= "modal_7"></div>
-      <div id= "modal_8"></div>
-    </address>
-  </div><!-- /.col -->
+<div class="column is-one-third">
+<strong>To</strong>
+<address>
+      <div class= "modalField"></div>
+      <div class= "modalField"></div>
+      <div class= "modalField"></div>
+      <div class= "modalField"></div>
+      </address>
+      </div>
 
-  <div class="col-xs-4 invoice-col">
-    <form class="form-horizontal">
-      <div class="form-group">
-        <div class="col-xs-5"><label>Invoice #</label></div>
-        <div class="col-xs-7"><p id="modal_invoice_number" class="pull-right"></p></div>
+
+      <div class="column is-one-third">
+      <form class="form-horizontal">
+        <div class="form-group">
+        <div><label><strong>Invoice no.</strong> <%= (Invoice.last.present? ? (Invoice.last.id + 1) : 1) %></label></div>
       </div>
                     
-      <div class="col-xs-12"></div>
-
       <div class="form-group">
-        <div class="col-xs-4"><label>Date</label></div>
-        <div class="col-xs-8"><span class="invoice_header_date pull-right"></span></div>
+        <label>Due date: </label> <span class="modalField" class="pull-right"></span>
       </div>
-                    
-      <div class="col-xs-12"></div>
+
+    
 
       <div class="form-group">
-        <div class="col-xs-5 invoice_space"><label>Amount due</label></div>
-        <div class="col-xs-7 invoice_space bold" style="text-align:right"><span class="due">875.00</span><span class="subtotal_currency"></span></div>
+        <div><label>Amount due: </label></div>
+        <hr/>
+        <div class="totalsModal" id="dueModal" style="text-align:right; padding-top:7px"></div>
       </div>
     </form>
-  </div><!-- /.col -->
-</div><!-- /.row -->
+  </div>
+</div>
 
 <div class="row">
 	<div class="col-xs-12">
     <hr>
-		<table class="table table-bordered" id="modal_items">
+		<table class="table table-bordered" id="modalField">
 		  <thead>
 		    <th class="item-name">Item</th>
 		    <th class="description">Description</th>
@@ -65,7 +62,7 @@
 	      <th class="units">Price</th>
 		  </thead>
 		  
-		  <tbody id="modal_tbody">
+		  <tbody id="modalFieldstbody">
 		  </tbody>
 		</table>
 
@@ -74,26 +71,29 @@
 
 <div class="row">
 	<div class="col-xs-6 col-xs-offset-6">
-    <div class="">
-      <table class="table" id="modal_totals">
+    <div>
+      <table class="table">
         <tr>
           <th style="width:50%">Subtotal:</th>
-          <td><span id="modal_subtotal"></span><span class="subtotal_currency"></span></td>
+          <td><span class="totalsModal"></span><span class="subtotal_currency"></span></td>
         </tr>
         <tr>
           <th>Tax:</th>
-          <td><span id="modal_9"></span><span class="subtotal_currency"></span></td>
+          <td><span class="totalsModal"></span><span class="subtotal_currency"></span></td>
         </tr>
         <tr>
           <th>Total:</th>
-          <td class="balance"><span class="due">875.00</span><span class="subtotal_currency"></span></td>
+          <td class="balance"><span class="totalsModal" id="invoiceTotalModal">0.00</span><span class="subtotal_currency"></span></td>
         </tr>
       </table>
     </div>
-  </div><!-- /.col -->
+  </div>
 </div>
 
-<div id="modal_terms">
-	<h5>Terms</h5>
-	<span id="modal_10"></span>
+<div style="text-align:center">Terms and Conditions</div>
+<hr>
+<div class="containerTable">
+<br/>
+<div style="width:100%; font-size:10px; text-align:center" id="termsModal", value=""></div>
+</div>  
 </div>
