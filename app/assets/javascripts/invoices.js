@@ -1,17 +1,24 @@
 let ind = 0;
+
 function addRow() {
   console.log("halo");
   let rows = document.getElementsByClassName("item-row");
+  let modalBody = document.getElementById("modalBody");
+  let modalRow =
+    '<tr class="item-rowModal"><td><span>Item name</span></td><td><span>Description</span></td><td><span>Unit cost</span></td><td><span>Quantity</span></td><td class="price_td"><span class="price">0.00</span><span class="subtotal_currency"></span></td></tr>';
   let row = document.getElementsByTagName("tbody")[0].insertRow(-1);
   let cell = row.insertCell(-1);
   ind++;
-  console.log("index of row is: " + ind);
+
+  modalBody.innerHTML += modalRow;
+
   row.innerHTML =
-    '<tr class="item-row"><td><input class="form-control item_name" placeholder="Item name" /></td><td><input class="form-control item_desc" placeholder="Item description" /></td><td><input class="form-control cost" value="0.00" /></td><td><input id="qty" onkeyup="calcPrice()" class="form-control qty" value="0" /></td><td class="price_td"><span class="price">0.00</span><span class="subtotal_currency"></span></td><td class="delete_td"><a onclick="deleteRows()" class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td></tr>';
+    '<tr class="item-row"><td><input class="input item_name" placeholder="Item name" /></td><td><input class="input item_desc" placeholder="Item description" /></td><td><input class="input cost" value="0.00" /></td><td><input id="qty" onkeyup="calcPrice()" class="input qty" value="0" /></td><td class="price_td"><span class="price">0.00</span><span class="subtotal_currency"></span></td><td class="delete_td"><a onclick="deleteRows()" class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td></tr>';
 }
 
 function deleteRows() {
   document.getElementsByTagName("tbody")[0].deleteRow(-1);
+  document.getElementById("modalBody").deleteRow(-1);
   if (document.getElementsByClassName("item-row").length < 2) {
     document.getElementsByClassName("delete").hide();
   }

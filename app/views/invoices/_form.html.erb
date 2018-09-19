@@ -75,11 +75,11 @@
       
           <tbody id="tbody">
             <tr class="item-row">
-              <td><input class="item_name" placeholder="Item name" /></td>
-              <td><input class="item_desc" placeholder="Item escription" /></td>
-              <td><input class="cost" value="0.00" /></td>
-              <td><input id="qty" class="qty" value="0" /></td>
-              <td class="price_td"><span id="price" class="price">0.00</span><span class="subtotal_currency"></span></td>
+              <td><input class="item_name input" placeholder="Item name" /></td>
+              <td><input class="item_desc input" placeholder="Item escription" /></td>
+              <td><input class="cost input" value="0.00" /></td>
+              <td><input id="qty" class="qty input" value="0" /></td>
+              <td class="price_td"><span id="price" class="price totals">0.00</span><span class="subtotal_currency"></span></td>
               <td class="delete_td"><a onclick="deleteRows()" class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td>
             </tr>
           </tbody>
@@ -174,18 +174,21 @@ document.getElementById("terms").value = 'The fee is a fixed fee of 2% plus VAT 
 
 
 document.getElementById("invoice_button").addEventListener("click", function() {
+  let inputs = Array.from(document.querySelectorAll(".input"));
+  let inputsModal = Array.from(document.querySelectorAll(".inputModal"));
   let modalField = Array.from(document.querySelectorAll(".modalField"));
   let formField = Array.from(document.querySelectorAll(".form-control"));
   let totals = Array.from(document.querySelectorAll(".totals"));
   let totalsModal = Array.from(document.querySelectorAll(".totalsModal"));
   document.getElementById("termsModal").innerText = document.getElementById("terms").value;
 
-
-
   totals.forEach(function(el, index) {
     totalsModal[index].innerText = el.innerText;
   });
 
+  inputs.forEach(function(el, index) {
+    inputsModal[index].innerText = el.value;
+  });
 
   document.querySelectorAll(".form-control").forEach(function(el, index) {
     modalField[index].innerText = formField[index].value;
