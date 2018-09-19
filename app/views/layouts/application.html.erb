@@ -39,6 +39,7 @@
           </div>
           <div class="navbar-item">
             <div class="field is-grouped">
+            <%= link_to 'Export PDF', invoices_path(format: 'pdf'), class:"navbar-item button is-primary is-inverted", style:"margin-right:2%"%>
               <%= link_to 'Export CSV', "invoices.csv", class:"navbar-item button is-primary is-inverted", style:"margin-right:2%"%>
               <%= link_to 'New Invoice', new_invoice_path, class:"navbar-item button is-primary is-inverted" %>
             </div>
