@@ -1,4 +1,6 @@
 let ind = 0;
+let tot = 0;
+let tax = 0;
 
 function addRow() {
   console.log("halo");
@@ -17,24 +19,34 @@ function addRow() {
 }
 
 function deleteRows() {
+  ind--;
+  let total = document.getElementsByClassName("price")[ind].innerText;
+  tot -= Number(total);
+  tax -= Number(total) * 0.13;
   document.getElementsByTagName("tbody")[0].deleteRow(-1);
   document.getElementById("modalBody").deleteRow(-1);
-  if (document.getElementsByClassName("item-row").length < 2) {
-    document.getElementsByClassName("delete").hide();
-  }
+  updater();
 }
-let tot = 0;
 
 function calcPrice() {
+  let currency = document.getElementById("invoice_currency").value;
   let parent = document.getElementsByClassName("item-row");
   let cost = document.getElementsByClassName("cost")[ind].value;
   let quantity = document.getElementsByClassName("qty")[ind].value;
   let total = cost * quantity;
   document.getElementsByClassName("price")[ind].innerText = total;
   tot += total;
-  let tax = tot * 0.13;
-  console.log("this is tax: " + tax);
+  tax = tot * 0.13;
 
+  Array.from(document.querySelectorAll(".subtotal_currency")).forEach(function(
+    el
+  ) {
+    el.innerText = " " + currency;
+  });
+  updater();
+}
+
+function updater() {
   document.getElementById("subtotal").innerText = tot.toFixed(2);
   document.getElementById("tax").innerText = tax.toFixed(2);
   document.getElementById("invoice_total").innerText = (tot + tax).toFixed(2);

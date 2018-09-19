@@ -36,15 +36,27 @@
       </div>
                     
       <div class="form-group">
-        <label>Due date: </label> <span class="modalField" class="pull-right"></span>
+        <label>Due date: </label><span class="modalField" class="pull-right"></span>
       </div>
-
-    
-
+  
+  
       <div class="form-group">
         <div><label>Amount due: </label></div>
         <hr/>
-        <div class="totalsModal" id="dueModal" style="text-align:right; padding-top:7px"></div>
+        <div style="text-align:right; padding-top:7px">
+        
+        
+        <span class="totalsModal" id="dueModal">0.00</span>
+        <span class="subtotal_currency"></span>
+        
+    
+        </div>
+
+
+
+
+
+
       </div>
     </form>
   </div>
@@ -97,10 +109,11 @@
   </div>
 </div>
 
-<div style="text-align:center">Terms and Conditions</div>
-<hr>
-<div class="containerTable">
-<br/>
-<div style="width:100%; font-size:10px; text-align:center" id="termsModal", value=""></div>
-</div>  
+
+<div id="modal_terms">
+  <h5 style="text-align:center">Terms</h5>
+  <span id="modal_10"></span>
+  <div style="width:100%; font-size:10px; text-align:center" id="termsModal", value="">
+  </div>
 </div>
+
