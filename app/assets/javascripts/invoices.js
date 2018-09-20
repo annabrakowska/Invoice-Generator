@@ -7,7 +7,7 @@ function addRow() {
   let rows = document.getElementsByClassName("item-row");
   let modalBody = document.getElementById("modalBody");
   let modalRow =
-    '<tr class="item-rowModal"><td><span>Item name</span></td><td><span>Description</span></td><td><span>Unit cost</span></td><td><span>Quantity</span></td><td class="price_td"><span class="price">0.00</span><span class="subtotal_currency"></span></td></tr>';
+    '<tr class="item-rowModal"><td class="inputModal"><span>Item name</span></td><td class="inputModal"><span>Description</span></td><td class="inputModal"><span>Unit cost</span></td><td class="inputModal"><span>Quantity</span></td><td class="price_td"><span class="price totalsModal">0.00</span><span class="subtotal_currency"></span></td></tr>';
   let row = document.getElementsByTagName("tbody")[0].insertRow(-1);
   let cell = row.insertCell(-1);
   ind++;
@@ -15,7 +15,7 @@ function addRow() {
   modalBody.innerHTML += modalRow;
 
   row.innerHTML =
-    '<tr class="item-row"><td><input class="input item_name" placeholder="Item name" /></td><td><input class="input item_desc" placeholder="Item description" /></td><td><input class="input cost" value="0.00" /></td><td><input id="qty" onkeyup="calcPrice()" class="input qty" value="0" /></td><td class="price_td"><span class="price forCalc">0.00</span><span class="subtotal_currency"></span></td><td class="delete_td"><a onclick="deleteRows()" class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td></tr>';
+    '<tr class="item-row"><td><input class="input item_name" placeholder="Item name" /></td><td><input class="input item_desc" placeholder="Item description" /></td><td><input class="input cost" value="0.00" /></td><td><input id="qty" onkeyup="calcPrice()" class="input qty" value="0" /></td><td class="price_td"><span class="price totals forCalc">0.00</span><span class="subtotal_currency"></span></td><td class="delete_td"><a onclick="deleteRows()" class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td></tr>';
 }
 
 function deleteRows() {
