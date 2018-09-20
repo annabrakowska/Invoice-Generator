@@ -13,7 +13,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body>  
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/invoices">
@@ -25,11 +25,8 @@
           <span></span>
         </div>
       </div>
-
-
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      
 
       <div id="navbar" class="navbar-menu">
         <div class="navbar-end">
@@ -43,20 +40,20 @@
           </div>
           <div class="navbar-item">
             <div class="field is-grouped">
-            <%= link_to 'New Invoice', new_invoice_path, class:"navbar-item button is-primary is-inverted", style:"margin-right:2%" %>
-            <%= link_to "Log out", destroy_session_path(:admin ), class: "button", :method => :delete %>
+              <%= link_to 'Log In', '/admins/sign_in', class:"navbar-item button is-primary is-inverted", style:"margin-right:2%"%>
+              <%= link_to 'Sign Up', '/admins/sign_up', class:"navbar-item button is-primary is-inverted", style:"margin-right:2%" %>
             </div>
           </div>
       </div>
     </div>
   </nav>
 
+
+
+
+
   <section class="section">
     <div class="container">
-    <div class="field is-grouped">
-    <%= link_to 'Export CSV', "invoices.csv", class:"navbar-item button is-primary", style:"margin-right:1%"%>
-    <%= link_to 'Export PDF', invoices_path(format: 'pdf'), class:"navbar-item button is-primary"%>
-    </div>
       <%= yield %>
     </div>
   </section>
@@ -67,4 +64,4 @@
   </div>
 </footer>
   </body>
-</html>
+  </html>

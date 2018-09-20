@@ -29,6 +29,12 @@ body {
   }
 }
 
+.form {
+  display: flex;
+  justify-content: center;
+  display: flex;
+}
+
 tbody :hover {
   background: #f8f9fa;
 }
