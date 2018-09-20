@@ -2,6 +2,7 @@ let ind = 0;
 let tot = 0;
 let tax = 0;
 let initial = 0;
+
 function addRow() {
   console.log("halo");
   let rows = document.getElementsByClassName("item-row");
@@ -19,10 +20,11 @@ function addRow() {
 }
 
 function deleteRows() {
+  let taxDrop = document.getElementById("taxDropdown").value;
   ind--;
   let total = document.getElementsByClassName("price")[ind].innerText;
   tot -= Number(total);
-  tax -= Number(total) * 0.13;
+  tax -= (Number(total) * Number(taxDrop)) / 100;
   document.getElementsByTagName("tbody")[0].deleteRow(-1);
   document.getElementById("modalBody").deleteRow(-1);
   updater();
@@ -33,6 +35,7 @@ function calcPrice() {
   let parent = document.getElementsByClassName("item-row");
   let cost = document.getElementsByClassName("cost")[ind].value;
   let quantity = document.getElementsByClassName("qty")[ind].value;
+  let taxDrop = document.getElementById("taxDropdown").value;
   let total = cost * quantity;
 
   document.getElementsByClassName("price")[ind].innerText = total;
@@ -44,7 +47,7 @@ function calcPrice() {
     console.log("this is total:" + tot);
   });
 
-  tax = tot * 0.13;
+  tax = (tot * Number(taxDrop)) / 100;
 
   Array.from(document.querySelectorAll(".subtotal_currency")).forEach(function(
     el
@@ -54,6 +57,12 @@ function calcPrice() {
   updater();
 }
 
+function taxUpdater() {
+  let taxDrop = document.getElementById("taxDropdown").value;
+  tax = (tot * Number(taxDrop)) / 100;
+  document.getElementById("tax").innerText = tax;
+}
+
 function updater() {
   document.getElementById("subtotal").innerText = tot.toFixed(2);
   document.getElementById("tax").innerText = tax.toFixed(2);
@@ -61,4 +70,6 @@ function updater() {
   document.getElementsByClassName("due")[0].innerText = (tot + tax).toFixed(2);
   document.getElementById("due").innerText = (tot + tax).toFixed(2);
   document.getElementById("invoice_total1").value = (tot + tax).toFixed(2);
+  document.getElementById("taxVal").innerText =
+    document.getElementById("taxDropdown").value + "%";
 }
