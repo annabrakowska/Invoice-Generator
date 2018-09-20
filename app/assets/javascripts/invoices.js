@@ -60,7 +60,7 @@ function calcPrice() {
 function taxUpdater() {
   let taxDrop = document.getElementById("taxDropdown").value;
   tax = (tot * Number(taxDrop)) / 100;
-  document.getElementById("tax").innerText = tax;
+  updater();
 }
 
 function updater() {
