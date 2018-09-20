@@ -1,0 +1,34 @@
+<h2 style="text-align:center">Log In</h2>
+<div class="form">
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <label class="label">Email</label>
+      <div class="control">  
+        <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+  </div>
+
+  
+
+  <div class="field">
+  <label class="label">Name</label>
+    <div class="control">  
+      <%= f.input :password, required: true, input_html: { autocomplete: "current-password" } %>
+    </div>
+  </div>
+
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable?%>
+    
+ 
+  <br/><br/>
+  <div class="field is-grouped  is-grouped is-grouped-centered">
+    <p class="control"><%= f.button :submit, "Log in", class: "button is-primary" %></p>
+    <p class="control"><%= render "devise/shared/links" %></p>
+  </div>
+<% end %>
+</div>
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <p style="text-align:center"><%= link_to "Forgot your password?", new_password_path(resource_name)%></p>
+<% end -%>
