@@ -1,29 +1,35 @@
 <p id="notice"><%= notice %></p>
+<h1 class="has-text-centered is-uppercase is-size-1-desktop">Show Invoice</h1>
+<br/><br/>
+<div class="show">
 
-<p>
-  <strong>Amount:</strong>
-  <%= @invoice.amount %>
-</p>
+<div class="field">
+<strong>Amount:</strong> <%= @invoice.amount%>
+</div>
 
-<p>
-  <strong>Company:</strong>
-  <%= @invoice.company %>
-</p>
-
-<p>
-  <strong>Client:</strong>
-  <%= @invoice.client %>
-</p>
-
-<p>
+<div class="field">
   <strong>Currency:</strong>
   <%= @invoice.currency %>
-</p>
+  </div>
 
-<p>
-  <strong>Date:</strong>
+  <div class="field">
+  <strong>Currency:</strong>
+  <%= @invoice.company %>
+  </div>
+
+  <div class="field">
+  <strong>Currency:</strong>
+  <%= @invoice.client %>
+  </div>
+
+
+  <div class="field">
+  <strong>Currency:</strong>
   <%= @invoice.date %>
-</p>
-
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+  </div>
+  <br/>
+  <span>
+  <%= link_to 'Back', invoices_path, class:"button" %>
+  <%= link_to 'Edit', edit_invoice_path(@invoice), class:"button"  %>
+  </span>
+</div>
