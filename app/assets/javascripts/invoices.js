@@ -1,7 +1,7 @@
 let ind = 0;
 let tot = 0;
 let tax = 0;
-
+let initial = 0;
 function addRow() {
   console.log("halo");
   let rows = document.getElementsByClassName("item-row");
@@ -15,7 +15,7 @@ function addRow() {
   modalBody.innerHTML += modalRow;
 
   row.innerHTML =
-    '<tr class="item-row"><td><input class="input item_name" placeholder="Item name" /></td><td><input class="input item_desc" placeholder="Item description" /></td><td><input class="input cost" value="0.00" /></td><td><input id="qty" onkeyup="calcPrice()" class="input qty" value="0" /></td><td class="price_td"><span class="price">0.00</span><span class="subtotal_currency"></span></td><td class="delete_td"><a onclick="deleteRows()" class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td></tr>';
+    '<tr class="item-row"><td><input class="input item_name" placeholder="Item name" /></td><td><input class="input item_desc" placeholder="Item description" /></td><td><input class="input cost" value="0.00" /></td><td><input id="qty" onkeyup="calcPrice()" class="input qty" value="0" /></td><td class="price_td"><span class="price forCalc">0.00</span><span class="subtotal_currency"></span></td><td class="delete_td"><a onclick="deleteRows()" class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td></tr>';
 }
 
 function deleteRows() {
@@ -34,8 +34,16 @@ function calcPrice() {
   let cost = document.getElementsByClassName("cost")[ind].value;
   let quantity = document.getElementsByClassName("qty")[ind].value;
   let total = cost * quantity;
+
   document.getElementsByClassName("price")[ind].innerText = total;
-  tot += total;
+
+  tot = 0;
+
+  Array.from(document.querySelectorAll(".forCalc")).forEach(function(el) {
+    tot += Number(el.innerText);
+    console.log("this is total:" + tot);
+  });
+
   tax = tot * 0.13;
 
   Array.from(document.querySelectorAll(".subtotal_currency")).forEach(function(
