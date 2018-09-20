@@ -1,5 +1,8 @@
-<p id="notice"><%= notice %></p>
 
+<div class="field is-grouped">
+<%= link_to 'Export CSV', "invoices.csv", class:"navbar-item button is-primary", style:"margin-right:1%"%>
+<%= link_to 'Export PDF', invoices_path(format: 'pdf'), class:"navbar-item button is-primary"%>
+</div>
 <h1 class="has-text-centered is-uppercase is-size-1-desktop">List of Invoices</h1>
 <br/><br/>
 <div class="containerTable">

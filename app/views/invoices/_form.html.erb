@@ -102,7 +102,21 @@
               <td style="width:300px"><span id="subtotal" class="totals">0.00</span><span class="subtotal_currency"></span></td>
             </tr>
             <tr>
-              <th>Tax 13% </th>
+              <th>
+              <span>Tax: </span>
+              <span>
+                <select onchange="taxUpdater()" id="taxDropdown">
+                  <option>3</option>
+                  <option>5</option>
+                  <option>10</option>
+                  <option>13</option>
+                  <option>15</option>
+                </select>
+              </span>    
+              <span>%</span>
+              
+              </th>
+  
               <td><span id="tax" class="totals">0.00</span><span class="subtotal_currency"></span></td>
             </tr>
             <tr>
