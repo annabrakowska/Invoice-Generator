@@ -1,4 +1,7 @@
 # Invoicer - CRUD Application for creating invoices
+Link: https://generate-invoice.herokuapp.com/
+Login: admin@admin.com
+Password: 123456
 
 Features:
 * User can register and log in
