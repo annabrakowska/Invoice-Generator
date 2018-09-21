@@ -11,7 +11,7 @@ Features:
 
 Technologies:
 * Ruby on Rails
-* Gems: Devise, CSV Importer, Wicked PDF Gem
+* Gems: Devise, Prawn
 * Javascript
 * HTML, CSS, SASS
 * Bootstrap, Bulma
