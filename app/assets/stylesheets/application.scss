@@ -29,6 +29,16 @@ body {
   }
 }
 
+.edit {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  font-size: 10px;
+}
+.cont {
+  display: flex;
+  justify-content: center;
+}
 .form {
   display: flex;
   justify-content: center;
