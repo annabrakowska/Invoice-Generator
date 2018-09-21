@@ -2,6 +2,7 @@
 Link: https://generate-invoice.herokuapp.com/
 Login: admin@admin.com
 Password: 123456
+![Alt text](/relative/path/to/pic1 "Optional Title")
 
 Features:
 * User can register and log in
